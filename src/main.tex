@@ -21,7 +21,7 @@
 
 % ========== PART 0 ========== %
 Contains examples, theorems, proofs, exercises and definitions from the book
-that I found important, not every detail
+that I found important, not every detail (3rd edition)
 
 
 % ========== PART 1 ========== %
@@ -157,11 +157,98 @@ that I found important, not every detail
     \item \textbf{Lemma:} An auxiliary theorem used to prove a larger theorem
     \item \textbf{Corollary:} A theorem that follows easily from another theorem
     \item \textbf{Proposition:} A true statement that is not as significant as a theorem
+    \item \textbf{Parity:} Two integers have the same parity if they are both even or both odd,
+    otherwise they have opposite parity
+    \item \textbf{Composite:} A positive integer that is not prime
+    \item If $a$ divides $b$ we write $a|b$, i.e. $\exists c \in \mathbb{Z}, b = ac$
+    \item The greates common divisor of $a$ and $b$ is denoted $\gcd(a,b)$, the least
+    common multiple is denoted $\text{lcm}(a,b)$
+    \item \textbf{Division Algorithm:} $\forall a, b \in \mathbb{Z}, b > 0, \exists! q, r \in
+    \mathbb{Z}, 0 \le r < b$  such that $a = bq + r$
+    \item In direct proofs, it can be a good idea to work at the proof from both ends, from
+    the assumptions down, and from the conclusion up, until both sides meet
+    \item WLOG means "without loss of generailty", and is generally used when a proof for
+    one case can be easily adapted to the other cases
+    \item Direct proof example (personal solution of 4 P28): Let $a,b,c \in
+    \mathbb{Z}$. Suppose $a$ and $b$ are not both zero, and $c \ne 0$. Prove
+    that $c \cdot \gcd(a,b) \le \gcd(ca,cb)$.
+    \begin{proof}
+        Let $d$ be the greatest common divisor of $a$ and $b$, so that $d_1 =
+        \gcd(a,b)$. Then there exist integers $x_1$ and $y_1$ such that $d_1x_1
+        = a$ and $d_1y_1 = b$. Now, considerer $d_2 = \gcd(ca,cb)$. There exist
+        integers $x_2$ and $y_2$ such that $d_2x_2 = ca$ and $d_2y_2 = cb$.
+        Substituting $a$ and $b$ in these equations gives $ca = cd_1x_1$ and $cb
+        = cd_1y_1$. Thus, $cd_1$ divides both $ca$ and $cb$. And since $d_2$ is
+        the greatest common divisor of $ca$ and $cb$, we have that $cd_1 \le
+        d_2$, or $c \cdot \gcd(a,b) \le \gcd(ca,cb)$.
+    \end{proof}
 \end{itemize}
 
 \subsection{Contrapositive Proof}
 
+\begin{itemize}
+    \item \textbf{Contrapositive:} The contrapositive of the statement $P
+    \implies Q$ is the logically equivalent statement $\neg Q \implies \neg P$
+    \item It is said that $a$ and $b$ are "congruent modulo $n$" if $n | (a-b)$, otherwise
+    stated as $a \equiv b \mod n$
+    \item General guidelines for good proofs:
+    \begin{itemize}
+        \item Begin each sentence with a word, not a symbol, otherwise it might
+        create ambiguity
+        \item End each sentence with a period, even when the sentence ends in a
+        mathematical expression.
+        \item Always separate mathematical expressions with text to avoid
+        ambiguity
+        \item Use the first person plural ("we") to make the reader feel
+        included
+        \item Each new symbol must be explained when it is first introduced
+        \item Watch out for the words "it" and "this" as they can be ambiguous
+        \item It is helpful to tip the reader off as to what type of proof you are
+        using: direct, contrapositive, contradiction, induction, etc.
+    \end{itemize}
+    \item Example of contrapositive proof (personal solution of 5 P32): If $a
+    \equiv b \mod n$, then $a$ and $b$ have the same remainder when divided by
+    $n$.
+    \begin{proof}
+        Assume $a$ and $b$ have a different remainder when divided by $n$, such that
+        \[a = nq_1 + r_1\]
+        \[b = nq_2 + r_2\]
+        with $0 \le r_1, r_2 < n$ and $r_1 \ne r_2$. Now, we can write that
+        $a - b = n(q_1 - q_2) + (r_1 - r_2)$. Since $r_1 \ne r_2$, we know that
+        $a - b$ does not divide $n$, so that $a \not\equiv b \mod n$. Thus, by
+        contrapositive, if $a \equiv b \mod n$, then $a$ and $b$ have the same
+        remainder when divided by $n$. 
+    \end{proof}
+\end{itemize}
+
 \subsection{Proof by Contradiction}
+
+\begin{itemize}
+    \item In proof by contradiction, we assume $\neg P$ and logically derive a
+    contradiction $C \land \neg C$ to conclude $P$. This is a vald proof, since
+    $\neg P \implies C \land \neg C$ is logically equivalent to $P$.
+    \begin{proof}
+        \begin{align*}
+        &\neg P \implies C \land \neg C\\
+        &\iff P \lor (C \land \neg C)\\
+        &\iff P \lor F\\
+        &\iff P
+        \end{align*}
+    \end{proof}
+    \item Example of proof by contradiction (personal solution of 6 P24): The number
+    $\log_2 3$ is irrational.
+    \begin{proof}
+        Assume $\log_2 3$ is rational, so that $\log_2 3 = \frac{a}{b}$ with $a$
+        and $b$ positive integers. Thus, $2^{\frac{a}{b}} = 3$, so that $2^a =
+        3^b$. This is a contradiction since $2^a$ is even and $3^b$ is odd. The
+        proposition that $2^a$ is even can easily be proven through mathematical
+        induction. The same goes for the second proposition, that $3^b$ is odd.
+        We will analyze only the second proposition. The base case is trivial:
+        $3^1$ is an odd number. Now assume $3^{b-1}$ is odd, then $3^{b-1} = 2k
+        + 1$ with $k \in \mathbb{Z}$, so that $3^b = 3 \cdot (2k + 1) = 6k + 3 =
+        2 \cdot (3k + 1) + 1 = 2n + 1$ with $n \in \mathbb{Z}$.
+    \end{proof}
+\end{itemize}
 
 
 % ========== PART 3 ========== %
@@ -169,9 +256,63 @@ that I found important, not every detail
 
 \subsection{Proving Non-Conditional Statements}
 
+\begin{itemize}
+    \item In case of a biconditional theorem ($P \iff Q$), we need to prove both 
+    $P \implies Q$ and $Q \implies P$. If we envision the implications as edges of
+    a graph and the propositions as verteces, we are trying to make the graph fully
+    connected.
+    \item In case of multiple equivalent statements, $P \iff Q \iff R \iff \dots$
+    we don't have to prove every possible conditional statement. Instead, we can
+    prove the easiest conditional statements that make the graph fully connected.
+    \begin{proof}
+        A fully connected graph of implications implies that if any of the
+        propositions are true, all of them must be true. This can be proven by
+        Following the chain of implications through the graph. If it is truly
+        fully connected, then the chain will reach every proposition,
+        necessarily making all of them true.Likewise if one of them is false,
+        they must all be false.
+    \end{proof}
+    \item In case of multiple equivalent statements, a circular pattern yields
+    the fewest conditional statements that must be proved
+    \item There are two types of existsence proofs: contstructive and
+    non-contstructive proofs. Constructive proofs display an explicit example
+    that proves the theorem, while non-constructive proofs prove an example
+    exists without actually giving one.
+\end{itemize}
+
 \subsection{Proofs Involving Sets}
 
+\begin{itemize}
+    \item Proving $A \subseteq B$ is done by proving $a \in A \implies a \in B$
+    \item Proving $A = B$ is done by proving $A \subseteq B \land B \subseteq A$
+    \item There is an equivalence relationship between sets and propositional
+    logic where sets correspond to propositions $P(x)$, operator $\cup$
+    corresponds to $\lor$, operator $\cap$ to $\land$, and $\bar{\empty}$ to
+    $\neg$.
+    \item Equivalences that work for propositional logic also works for sets.
+    E.g. DeMorgan's law, $\overline{A \cap B} = \overline{A} \cup \overline{B}$
+    and $\overline{A \cup B} = \overline{A} \cap \overline{B}$. This also works
+    for distributive laws, associate laws, etc.
+    \item \textbf{Perfect number:} A number $p \in \mathbb{N}$ is perfect when
+    it equals the sum of its positive divisors less than itself. E.g. $6 = 1 + 2
+    + 3$.
+    \item Example of a proof involving sets (personal solution of 8 P31).
+    Suppose $B \ne \emptyset$ and $A \times B \subseteq C \times C$. Prove that
+    $A \subseteq C$.
+    \begin{proof}
+        Since the order of the Cartesian products matters, we know that if $A
+        \times B \subseteq B \times C$, it must also be true that $A \subseteq B$
+        and $B \subseteq C$ (this can easily be proven through proof by
+        contradiction). Thus, due to the transitive property of sets, $A
+        \subseteq C$ is also true.
+    \end{proof}
+\end{itemize}
+
 \subsection{Disproof}
+
+\begin{itemize}
+    \item 
+\end{itemize}
 
 \subsection{Mathematical Induction}
 
