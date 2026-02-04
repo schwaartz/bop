@@ -30,7 +30,7 @@ that I found important, not every detail (3rd edition)
 \subsection{Sets}
 
 \begin{itemize}
-    \item \textbf{Powerset:} $\mathscr{P}(A)$ is the the powerset of $A$, i.e.
+    \item \textbf{Powerset:} $\mathscr{P}(A)$ is the powerset of $A$, i.e.
     the set of all subsets, sometimes denoted $2^A$, because for a set with
     cardinality $n$, there are $2^n$ subsets.
     \item \textbf{Russel's paradox:} The set $X = \{A \text{ is a set } | A \in
@@ -131,15 +131,15 @@ that I found important, not every detail (3rd edition)
     \item Example of combinatorial proof (personal solution of 3.10 P12): Show
     that $\sum_{k=1}^n k \binom{n}{k} \binom{k}{m} = \binom{n}{m} 2^{n-m}$.
     \begin{proof}
-        Assume we have a set of $n$ ordered elements. Then the right hand side
+        Assume we have a set of $n$ ordered elements. Then the right-hand side
         of the equation counts the number of ways in which we can choose a
-        subset $A$ of size $m$ and then choose whether or not to include the
-        remaining $n-m$ elements in a second set $B$. The left hand side of the
-        equation counts the same thing in a different way. First, we choose the
+        subset $A$ of size $m$ and then choose whether to include the
+        remaining $n-m$ elements in a second set $B$. The left-hand side of the
+        equation counts the same thing differently. First, we choose the
         number of elements $k$ to include in the total subset $A \cup B$. Now,
         for each possible $k$, there are $\binom{n}{k}$ ways to choose the $k$
         elements from the original set. From these $k$ elements, we need to
-        choose $m$ elements to be in the first subsetset $A$. The remaining
+        choose $m$ elements to be in the first subset $A$. The remaining
         elements will be part of the second subset $B$. There are $\binom{k}{m}$
         ways to make this choice, so that the total number of ways to choose
         such a subset is $\sum_{k=1}^n k \binom{n}{k} \binom{k}{m}$.
@@ -167,7 +167,7 @@ that I found important, not every detail (3rd edition)
     \mathbb{Z}, 0 \le r < b$  such that $a = bq + r$
     \item In direct proofs, it can be a good idea to work at the proof from both ends, from
     the assumptions down, and from the conclusion up, until both sides meet
-    \item WLOG means "without loss of generailty", and is generally used when a proof for
+    \item WLOG means "without loss of generality", and is generally used when a proof for
     one case can be easily adapted to the other cases
     \item Direct proof example (personal solution of 4 P28): Let $a,b,c \in
     \mathbb{Z}$. Suppose $a$ and $b$ are not both zero, and $c \ne 0$. Prove
@@ -175,7 +175,7 @@ that I found important, not every detail (3rd edition)
     \begin{proof}
         Let $d$ be the greatest common divisor of $a$ and $b$, so that $d_1 =
         \gcd(a,b)$. Then there exist integers $x_1$ and $y_1$ such that $d_1x_1
-        = a$ and $d_1y_1 = b$. Now, considerer $d_2 = \gcd(ca,cb)$. There exist
+        = a$ and $d_1y_1 = b$. Now, consider $d_2 = \gcd(ca,cb)$. There exist
         integers $x_2$ and $y_2$ such that $d_2x_2 = ca$ and $d_2y_2 = cb$.
         Substituting $a$ and $b$ in these equations gives $ca = cd_1x_1$ and $cb
         = cd_1y_1$. Thus, $cd_1$ divides both $ca$ and $cb$. And since $d_2$ is
@@ -199,7 +199,7 @@ that I found important, not every detail (3rd edition)
         mathematical expression.
         \item Always separate mathematical expressions with text to avoid
         ambiguity
-        \item Use the first person plural ("we") to make the reader feel
+        \item Use the first-person plural ("we") to make the reader feel
         included
         \item Each new symbol must be explained when it is first introduced
         \item Watch out for the words "it" and "this" as they can be ambiguous
@@ -259,7 +259,7 @@ that I found important, not every detail (3rd edition)
 \begin{itemize}
     \item In case of a biconditional theorem ($P \iff Q$), we need to prove both 
     $P \implies Q$ and $Q \implies P$. If we envision the implications as edges of
-    a graph and the propositions as verteces, we are trying to make the graph fully
+    a graph and the propositions as vertices, we are trying to make the graph fully
     connected.
     \item In case of multiple equivalent statements, $P \iff Q \iff R \iff \dots$
     we don't have to prove every possible conditional statement. Instead, we can
@@ -311,18 +311,90 @@ that I found important, not every detail (3rd edition)
 \subsection{Disproof}
 
 \begin{itemize}
-    \item 
+    \item \textbf{Conjecture:} A statement which we don't know to be true or false
+    \item Disproving a statement $P$ boils down to proving $\neg P$. For that we can
+    just use the aforementioned techniques.
+    \item Example of disproof (personal solution to 9 P34). If $X \subseteq A
+    \cup B$, then $X \subseteq A$ or $X \subseteq B$.
+    \begin{proof}
+        We will disprove this proposition through a counterexample. Suppose $A =
+        \{a, c\}$ and $B = \{b, c\}$, then $A \cup B = \{a, b, c\}$. Now suppose
+        that $X = \{a, b, c\}$. Then $X \subseteq A \cup B$, but not $X \subseteq
+        A$ or $X \subseteq B$.
+    \end{proof}
 \end{itemize}
 
 \subsection{Mathematical Induction}
 
+\begin{itemize}
+    \item Strong induction assumes $S_1, S_2, \dots, S_k$ to prove $S_{k+1}$,
+    while weak induction only assumes $S_k$
+    \item \textbf{Proof by Smallest Counterexample:} A hybrid of mathematical
+    induction and proof by contradiction. It has four steps
+    \begin{enumerate}
+        \item Check that $S_1$ holds
+        \item Suppose that not every $S_n$ holds
+        \item Let $S_k$ be the first false statement
+        \item Use the fact that $S_{k-1}$ is true and $S_k$ false to get a
+        contradiction
+    \end{enumerate}
+    \item \textbf{Fundamental Theorem of Arithmetic:} \textit{Any integer $k$
+    greater than 1 has a unique prime factorization $k = p_1 \cdot p_2 \cdot
+    \dots \cdot p_n$ with $p_1, p_2, \dots, p_n$ primes}
+\end{itemize}
 
 % ========== PART 4 ========== %
 \section{Relations, Functions, and Cardinality}
 
 \subsection{Relations}
 
+\begin{itemize}
+    \item Any subset $R$ of a set $A \times A$ can be considered a relation
+    \item We often abbreviate $(x,y) \in R$ as $xRy$
+    \item A relation is \textbf{reflexive} if $\forall x \in A, xRx$
+    \item A relation is \textbf{symmetric} if $\forall x,y \in A, xRy \implies yRx$
+    \item A relation is \textbf{transitive} if $\forall x,y,z \in A ((xRy) \land (yRz))
+    \implies xRz$
+    \item \textbf{Equivalence relation:} A relation that is reflexive, symmetric and
+    transitive
+    \item \textbf{Equivalence class: } A subset of $A$ containing only element
+    that are equal under a certain equivalence relation, usually denoted with a
+    representative element $a$. Equivalence classes are usually written as $[a]
+    = \{x \in A : xRa\}$
+    \item Equivalence relations arise in many different fields of mathematics. They
+    are often hidden under the surface. E.g. the set of antiderivatives $F(x) + c$
+    are considered equal
+    \item Partitions and equivalence relations have a one-to-one correspondence.
+    \item Relations can also arise from two different sets, so that $R \subseteq
+    A \times B$
+    \item Proving anything related to relations essentially boils down to applying
+    the definitions of reflexive, symmetric and transitive relations along with the
+    aforementioned methods of proof
+\end{itemize}
+
 \subsection{Functions}
+
+\begin{itemize}
+    \item A function $f$ from $A$ to $B$ (denoted $f: A \rightarrow B$) is a relation
+    $f \subseteq A \times B$ that contains exactly one pair of the form $(a,b)$ for 
+    every $a$ in $A$ (denoted $f(a) = b$).
+    \item A function $f: A \rightarrow B$ contains a pair $(a,b)$ for every value $a$
+    in its domain $A$, although it must not have a pair for every value $b$ in its
+    codomain $B$
+    \item The range is the subset $\{f(a) : a\in A\}$ of the codomain $B$
+    \item Since a function is really just a relation and a relation is really
+    just a set, a function is also just a set, in theory
+    \item We consider functions to be equal ($f = g$) when their set representations
+    are equal, i.e. when $f(x) = g(x)$ for every $x \in A$
+    \item \textbf{Injection:} $\forall a, a' \in A, a \ne a' \implies f(a) \ne
+    f(a')$ (one-to-one)
+    \item \textbf{Surjection:} $\forall b \in B, \exists a \in A, f(a) = b$
+    (onto)
+    \item \textbf{Bijection:} injection and surjection
+    \item Proving anything about function, like proving anything about relations
+    boils down to applying the definitions of injections, surjections,
+    bijections and the aforementioned methods of proof
+\end{itemize}
 
 \subsection{Proofs in Calculus}
 
