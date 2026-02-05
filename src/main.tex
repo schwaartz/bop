@@ -361,7 +361,7 @@ that I found important, not every detail (3rd edition)
     that are equal under a certain equivalence relation, usually denoted with a
     representative element $a$. Equivalence classes are usually written as $[a]
     = \{x \in A : xRa\}$
-    \item Equivalence relations arise in many different fields of mathematics. They
+    \item Equivalence relations arise in many fields of mathematics. They
     are often hidden under the surface. E.g. the set of antiderivatives $F(x) + c$
     are considered equal
     \item Partitions and equivalence relations have a one-to-one correspondence.
@@ -394,10 +394,122 @@ that I found important, not every detail (3rd edition)
     \item Proving anything about function, like proving anything about relations
     boils down to applying the definitions of injections, surjections,
     bijections and the aforementioned methods of proof
+    \item \textbf{Pigeonhole Principle:} (applied to functions) For a function
+    $f: A \rightarrow B$:
+    \begin{enumerate}
+        \item If $|A| > |B|$, then $f$ is not injective
+        \item If $|A| < |B|$, then $f$ is not surjective
+    \end{enumerate}
+    \item The inverse relation $R^{-1}$ is defined as $\{(y,x) : (x,y) \in R\}$
+    \item The inverse function can only be defined when $f$ is bijective, in
+    which case $f^{-1}$ is defined such that $f \circ f^{-1} = i_B$ and $f^{-1}
+    \circ f = i_A$ 
+    \item \textbf{Image:} $f(X) = \{f(x) : x \in X\}$
+    \item \textbf{Preimage:} $f^{-1}(X) = \{f^{-1}(x) : x \in X\}$
+    \item Example proof using functions (personal solution 12 P14): Let $f: A
+    \rightarrow B$ be a function, and $Y \subseteq B$. Prove or disprove:
+    $f^{-1}(f(f^{-1}(Y))) = f^{-1}(Y)$.
+    \begin{proof}
+        This statement is obviously true, but to prove it, we need to revisit
+        definitions. $f^{-1}(f(f^{-1}(Y)))$ is defined as $\{f^{-1}(x) : x \in
+        C\}$ with $C = f(f^{-1}(Y))$, so if we can prove that $C = Y$, then we
+        are done. $C$ is defined as 
+        \begin{align*}
+        C &= \{f(x) : x \in f^{-1}(Y)\} \\
+          &= \{f(x) : x \in \{f^{-1}(x') : x' \in Y\}\} \\
+          &= \{f(f^{-1}(x')) : x' \in Y\} \\
+          &= \{i_B(x') : x' \in Y\} \\
+          &= Y
+        \end{align*}
+    \end{proof}
 \end{itemize}
 
 \subsection{Proofs in Calculus}
+\begin{itemize}
+    \item \textbf{Limit: } $\lim_{x \rightarrow c}f(x) = L$ if $\forall
+    \epsilon > 0, \exists \delta > 0, (0 < |x - c| < \delta) \implies (|f(x) -
+    L| < \epsilon)$
+    \item The rest of this chapter mostly recaps high-school level calculus, not
+    interesting
+\end{itemize}
 
 \subsection{Cardinality of Sets}
+
+\begin{itemize}
+    \item Two sets are said to have the same cardinality, written $|A| = |B|$,
+    if there exists a bijection $f: A \rightarrow B$
+    \item Any set with equal cardinality to $|\mathbb{N}|$ is considered
+    countably infinite. E.g. $|\mathbb{N}| = |\mathbb{Z}|$.
+    \begin{proof}
+        Consider the bijection $f: \mathbb{N} \rightarrow \mathbb{Z}$ where
+        $f(n) = n/2$ if $n$ even and $f(n) = -\frac{n-1}{2}$ if $n$ uneven $f:
+        \{1,2,3,4,5,\dots\} \mapsto \{0,1,-1,2,-2,\dots\}$. To prove this is a
+        bijection, we must prove it is both an injection and a surjection.
+        Firstly, it is a surjection, since $\forall z \in \mathbb{Z}, \exists n
+        \in \mathbb{N}, f(n) = z$, namely $n = 2z$ if $z > 0$ and $n = -2z + 1$
+        if $z \le 0$. Secondly, it is an injection, since $\forall z \ne z' \in
+        \mathbb{Z}, f(z) \ne f(z')$.
+    \end{proof}
+    \item It was George Cantor who first recognized that $|\mathbb{N}| \ne
+    |\mathbb{R}|$ by proving that there are no surjective function $f:
+    \mathbb{N} \rightarrow \mathbb{R}$ (diagonal in the table argument). It is
+    said that $\mathbb{R}$ is uncountably infinite
+    \item Intervals in $\mathbb{R}$ are generally all uncountably infinite,
+    since there are an infinite number of bijective function that can take you
+    from any continuous interval to any other continuous interval in
+    $\mathbb{R}$
+    \item A set is considered countable if it is finite
+    \item We use the first Hebrew letter "alpeh" to denote cardinalities. We
+    write $\aleph_0 = |\mathbb{N}|$ and $\aleph_1 = |\mathbb{R}|$
+    \item A set $A$ is countably infinite if we can arrange its elements in an
+    infinite list $a_1, a_2, a_3, ...$, since $f: \mathbb{N} \rightarrow A : f(n)
+    \mapsto a_n$ is a bijection
+    \item The set of rational numbers $\mathbb{Q}$ is countably infinite
+    \begin{proof}
+        Every element in $\mathbb{Q}$ can be denoted as $\frac{a}{b}$ with $a$
+        and $b$ integers with $b > 0$. If we place the values for $a$
+        in the columns of a table and the values $b$ in the rows of a table, we
+        can construct an infinite list that covers the whole table by drawing a
+        line through the diagonals of the table.
+    \end{proof}
+    \item The Cartesian product of two countably infinite sets is also countably
+    infinite. The proof is analogous to that of $|\mathbb{Q}| = \aleph_0$. Therefor
+    $A^n$ must also be countably infinite if $A$ is countably infinite
+    \item We say that $|A| < |B|$ when there is an injective function $f: A
+    \rightarrow B$, but no bijective function
+    \item We can prove that $\aleph_0 < \aleph_1$ with the same argument that was used
+    to prove that $|\mathbb{Q}| = \aleph_0$
+    \item If $A$ is any set, then $|A| < |\mathscr{P}(A)|$
+    \begin{proof}
+        To prove this theorem, we must prove that there is an injection $f: A
+        \rightarrow \mathscr{P}(A)$, but no bijection. Proving there is an
+        injection is easy, take $f(x) = {x}$ for example. Proving there is no
+        bijection can be done by proving there is no surjection. Suppose
+        \[B = \{x \in A : x \notin f(x)\} \subseteq A.\] This set has the
+        property $B \in \mathscr{P}(A)$, but also $f(a) \ne B$ for all $a \in
+        A$. Since this set exists for any function $f$, no $f$ can be
+        surjective. To prove that $f(a) \ne B$ for all $a \in A$, consider the
+        following cases. \\
+        \underline{Case 1}: If $a \notin f(a)$ then $a \in B$,
+        consequently $f(a) = B$ is impossible, since it would imply that $a \in
+        B$. \\
+        \underline{Case 2}: If $a \in f(a)$ then $a \notin B$, consequently
+        $f(a) = B$ is impossibly, since it would imply that $a \notin B$. \\
+        Simply put, no element $a$ can be mapped onto $B$, because if it were,
+        then $B$ could not contain $a$, but if it does not contain $a$ it must
+        contain $a$, leading to a contradiction.
+    \end{proof}
+    \item \textbf{Cantor-Bernstein-Schröder theorem:} To prove that $|A| = |B|$
+    it suffices to prove that there exists and injection from $A$ to $B$ and from
+    $B$ to $A$
+    \item The Cantor-Bernstein-Schröder theorem can be used to prove that
+    $|\mathscr{P}(\mathbb{N})| = |\mathbb{R}|$
+    \item \textbf{Continuum hypothesis:} There exists no set with cardinality
+    between that of $\mathbb{N}$ and that of its powerset
+    \item It has been proven that this hypothesis cannot be proven true or
+    false. Therefor, accepting it as true leads to one version of set theory,
+    while accepting it as true leads to another, both different, but valid
+    versions
+\end{itemize}
 
 \end{document}
