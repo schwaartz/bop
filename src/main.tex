@@ -34,8 +34,8 @@ that I found important, not every detail (3rd edition)
     the set of all subsets, sometimes denoted $2^A$, because for a set with
     cardinality $n$, there are $2^n$ subsets.
     \item \textbf{Russel's paradox:} The set $X = \{A \text{ is a set } | A \in
-    A\}$ implies the logic inconsistency $X \in X \iff X \notin X$. Following the
-    Zermelo–Fraenkel axioms avoids Russel's paradox
+    A\}$ implies the logical inconsistency $X \in X \iff X \notin X$. Following
+    the Zermelo–Fraenkel axioms avoids Russel's paradox
     \item \textbf{Set builder notation:} $\{x \in A | P(x)\}$ is the set of all elements
     $x$ in $A$ such that $P(x)$ is true
     \item \textbf{Universal set: }$U$ is generally considered to be the universal set and is context
@@ -98,15 +98,13 @@ that I found important, not every detail (3rd edition)
         division principle does not hold. Then we know that
         \[\neg((\exists b \in B, |b| \ge \lceil n/k \rceil) \land(\exists b \in
         B, |b| \le \lfloor n/k \rfloor)) \]
-        \[(\forall b \in B, |b| < \lceil n/k \rceil) \land(\forall b \in B, |b|
-        > \lfloor n/k \rfloor) \]
-        \[\forall b \in B, \lfloor n/k \rfloor < |b| < \lceil n / k \rceil.\]
-        Now there are two possible cases: $\lfloor n/k \rfloor = \lceil n / k
-        \rceil$ and $\lfloor n/k \rfloor = \lceil n / k \rceil - 1$. Both cases
-        immediately lead to an impossible solution, since there is no valid
-        number of elements $|b|$ to choose. Therefore, if the division principle
-        does not hold, there is no way to distribute the elements in a valid
-        way.
+        \[(\forall b \in B, |b| < \lceil n/k \rceil) \lor(\forall b \in B, |b| >
+        \lfloor n/k \rfloor) \] Now we have an expression of the form $P \lor
+        Q$, which is false if both $P$ and $Q$ are false. The first proposition
+        must be false, since $k \lceil n/k \rceil \le n$, so if $|b| < \lceil
+        n/k \rceil$ for all $b$, then the amount of objects in boxes is $k|b| <
+        n$, i.e. not all the boxes are filled. A similar argument holds for the
+        second proposition.
     \end{proof}
     \item \textbf{Pigeonhole Principle:} \textit{Suppose you divide $n$ objects
     into $k$ boxes. If $n>k$, then at least one box contains more than one object.
@@ -129,7 +127,7 @@ that I found important, not every detail (3rd edition)
     expressions are equal by showing that they are both answers to the same
     counting question
     \item Example of combinatorial proof (personal solution of 3.10 P12): Show
-    that $\sum_{k=1}^n k \binom{n}{k} \binom{k}{m} = \binom{n}{m} 2^{n-m}$.
+    that $\sum_{k=1}^n \binom{n}{k} \binom{k}{m} = \binom{n}{m} 2^{n-m}$.
     \begin{proof}
         Assume we have a set of $n$ ordered elements. Then the right-hand side
         of the equation counts the number of ways in which we can choose a
@@ -142,7 +140,7 @@ that I found important, not every detail (3rd edition)
         choose $m$ elements to be in the first subset $A$. The remaining
         elements will be part of the second subset $B$. There are $\binom{k}{m}$
         ways to make this choice, so that the total number of ways to choose
-        such a subset is $\sum_{k=1}^n k \binom{n}{k} \binom{k}{m}$.
+        such a subset is $\sum_{k=1}^n \binom{n}{k} \binom{k}{m}$.
     \end{proof}
 \end{itemize}
 
@@ -367,7 +365,7 @@ that I found important, not every detail (3rd edition)
     \item Partitions and equivalence relations have a one-to-one correspondence.
     \item Relations can also arise from two different sets, so that $R \subseteq
     A \times B$
-    \item Proving anything related to relations essentially boils down to applying
+    \item Proving anything related to relations boils down to applying
     the definitions of reflexive, symmetric and transitive relations along with the
     aforementioned methods of proof
 \end{itemize}
@@ -447,11 +445,11 @@ that I found important, not every detail (3rd edition)
         bijection, we must prove it is both an injection and a surjection.
         Firstly, it is a surjection, since $\forall z \in \mathbb{Z}, \exists n
         \in \mathbb{N}, f(n) = z$, namely $n = 2z$ if $z > 0$ and $n = -2z + 1$
-        if $z \le 0$. Secondly, it is an injection, since $\forall z \ne z' \in
-        \mathbb{Z}, f(z) \ne f(z')$.
+        if $z \le 0$. Secondly, it is an injection, since $n \ne
+        n' \implies f(n) \ne f(n')$.
     \end{proof}
     \item It was George Cantor who first recognized that $|\mathbb{N}| \ne
-    |\mathbb{R}|$ by proving that there are no surjective function $f:
+    |\mathbb{R}|$ by proving that there are no surjective functions $f:
     \mathbb{N} \rightarrow \mathbb{R}$ (diagonal in the table argument). It is
     said that $\mathbb{R}$ is uncountably infinite
     \item Intervals in $\mathbb{R}$ are generally all uncountably infinite,
@@ -477,23 +475,23 @@ that I found important, not every detail (3rd edition)
     $A^n$ must also be countably infinite if $A$ is countably infinite
     \item We say that $|A| < |B|$ when there is an injective function $f: A
     \rightarrow B$, but no bijective function
-    \item We can prove that $\aleph_0 < \aleph_1$ with the same argument that was used
-    to prove that $|\mathbb{Q}| = \aleph_0$
+    \item We can prove that $\aleph_0 < \aleph_1$ with a similar argument as the
+    one that is used to prove that $|\mathbb{R}| \ne |\mathbb{N}|$ (digits on
+    the diagonal argument)
     \item If $A$ is any set, then $|A| < |\mathscr{P}(A)|$
     \begin{proof}
         To prove this theorem, we must prove that there is an injection $f: A
         \rightarrow \mathscr{P}(A)$, but no bijection. Proving there is an
-        injection is easy, take $f(x) = {x}$ for example. Proving there is no
+        injection is easy, take $f(x) = \{x\}$ for example. Proving there is no
         bijection can be done by proving there is no surjection. Suppose
         \[B = \{x \in A : x \notin f(x)\} \subseteq A.\] This set has the
         property $B \in \mathscr{P}(A)$, but also $f(a) \ne B$ for all $a \in
         A$. Since this set exists for any function $f$, no $f$ can be
         surjective. To prove that $f(a) \ne B$ for all $a \in A$, consider the
         following cases. \\
-        \underline{Case 1}: If $a \notin f(a)$ then $a \in B$,
-        consequently $f(a) = B$ is impossible, since it would imply that $a \in
-        B$. \\
-        \underline{Case 2}: If $a \in f(a)$ then $a \notin B$, consequently
+        \underline{Case 1}: If $a \notin f(a)$ then $a \in B$. Consequently,
+        $f(a) = B$ is impossible, since it would imply that $a \in B$. \\
+        \underline{Case 2}: If $a \in f(a)$ then $a \notin B$. Consequently,
         $f(a) = B$ is impossibly, since it would imply that $a \notin B$. \\
         Simply put, no element $a$ can be mapped onto $B$, because if it were,
         then $B$ could not contain $a$, but if it does not contain $a$ it must
@@ -506,9 +504,9 @@ that I found important, not every detail (3rd edition)
     $|\mathscr{P}(\mathbb{N})| = |\mathbb{R}|$
     \item \textbf{Continuum hypothesis:} There exists no set with cardinality
     between that of $\mathbb{N}$ and that of its powerset
-    \item It has been proven that this hypothesis cannot be proven true or
-    false. Therefor, accepting it as true leads to one version of set theory,
-    while accepting it as true leads to another, both different, but valid
+    \item It has been proven that the continuum hypothesis cannot be proven true
+    or false. Therefor, accepting it as true leads to one version of set theory,
+    while accepting it as false leads to another, both different, but valid
     versions
 \end{itemize}
 
